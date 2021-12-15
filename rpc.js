@@ -101,6 +101,9 @@ function playRound (playerSelection, computerPlay) {
     
 }
 
+
+
+// --- PLAY GAME - BEST OF FIVE ROUNDS ---
 let playerScore = 0;
 let computerScore = 0;
 let tieGame = false;
