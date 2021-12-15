@@ -1,16 +1,22 @@
 const choices = ['rock', 'paper', 'scissors'];
 
-
-
-function compareSelections (player, computer) {
-// rock beats scissors
-// scissors beats paper
-// paper beats rock
+function randomNumber (min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + 1);
 }
 
 function computerPlay () {
 // randomly choose between three options
-// return result
+    let choice = randomNumber(1,3);
+    if (choice == 1) {
+        choice = 'rock';
+    }
+    else if (choice == 2) {
+        choice = 'paper';
+    }
+    else {
+        choice = 'scissors';
+    }
+    return choice;
 }
 
 function playerSelection () {
@@ -18,6 +24,7 @@ function playerSelection () {
     let choice = prompt('Rock, Paper, or Scissors? Choose: ').toLowerCase();
 
 // if input is valid, return choice
+// else re-prompt player
     switch (choice) {
         case 'rock': 
             choice = 'rock';
@@ -32,9 +39,13 @@ function playerSelection () {
             return playerSelection();
     }
     return choice;
-
-// else give error message and re-prompt player
 }
+
+function compareSelections (player, computer) {
+    // rock beats scissors
+    // scissors beats paper
+    // paper beats rock
+    }
 
 function playRound (playerSelection, computerSelection) {
 // get player selection ... prompt player(call playerSelection)
@@ -47,17 +58,5 @@ function game () {
 // playRound 5 times
 }
 
-function randomNumber (min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + 1);
-}
-
-console.log(randomNumber(1, 3));
-console.log(randomNumber(1, 3));
-console.log(randomNumber(1, 3));
-console.log(randomNumber(1, 3));
-console.log(randomNumber(1, 3));
-console.log(randomNumber(1, 3));
-console.log(randomNumber(1, 3));
-console.log(randomNumber(1, 3));
-let playerChoice = playerSelection();
-console.log(playerChoice);
+console.log(playerSelection());
+console.log(computerPlay());
