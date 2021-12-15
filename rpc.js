@@ -84,16 +84,17 @@ function compareSelections (player, computer) {
     }
 }
 
-function playRound (playerSelection, computerSelection) {
+function playRound (playerSelection, computerPlay) {
 // get player selection ... prompt player(call playerSelection)
 // get computer selection ... call computerSelection()
-// compare playconsole.log(randomNumber(1, 3));er and computer selections
-// based on rules, determine and display winner
+// compare player and computer selections
+    return compareSelections(playerSelection, computerPlay);
 }
 
 function game () {
 // playRound 5 times
+    
 }
 
 
-console.log(compareSelections(playerSelection(), computerPlay()));
+console.log(game());
