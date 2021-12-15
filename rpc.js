@@ -1,5 +1,3 @@
-const choices = ['rock', 'paper', 'scissors'];
-
 function randomNumber (min, max) {
     return Math.floor(Math.random() * (max - min + 1) + 1);
 }
@@ -42,6 +40,45 @@ function playerSelection () {
 }
 
 function compareSelections (player, computer) {
+    if (player == 'rock') {
+        switch (computer) {
+            case 'rock':
+                return 'Tie Game. Rocks all around. No one wins!';
+                break
+            case 'paper':
+                return 'Paper covers Rock. You lose!';
+                break
+            case 'scissors':
+                return 'Rock smashes Scissors. You are victorious!';
+                break
+        }
+    }
+    else if (player == 'paper') {
+        switch (computer) {
+            case 'rock':
+                return 'Paper covers Rock. You WIN!';
+                break
+            case 'paper':
+                return 'Tie Game. Rocks all around. No one wins!';
+                break
+            case 'scissors':
+                return 'Scissors cut Paper. You lose!';
+                break
+        }
+    }
+    else if (player == 'scissors') {
+        switch (computer) {
+            case 'rock':
+                return 'Rock smashes Scissors. You lose!';
+                break
+            case 'paper':
+                return 'Scissors cut Paper. You are the Victor!';
+                break
+            case 'scissors':
+                return 'Tie Game. Scissors verus Scissors. No one wins!';
+                break
+        }
+    }
     // rock beats scissors
     // scissors beats paper
     // paper beats rock
@@ -58,5 +95,5 @@ function game () {
 // playRound 5 times
 }
 
-console.log(playerSelection());
-console.log(computerPlay());
+
+console.log(compareSelections(playerSelection(), computerPlay()));
