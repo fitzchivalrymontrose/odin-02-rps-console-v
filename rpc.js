@@ -40,6 +40,9 @@ function playerSelection () {
 }
 
 function compareSelections (player, computer) {
+// rock beats scissors
+// scissors beats paper
+// paper beats rock
     if (player == 'rock') {
         switch (computer) {
             case 'rock':
@@ -59,7 +62,7 @@ function compareSelections (player, computer) {
                 return 'Paper covers Rock. You WIN!';
                 break
             case 'paper':
-                return 'Tie Game. Rocks all around. No one wins!';
+                return 'Tie Game. Papers everywhere. No one wins!';
                 break
             case 'scissors':
                 return 'Scissors cut Paper. You lose!';
@@ -79,10 +82,7 @@ function compareSelections (player, computer) {
                 break
         }
     }
-    // rock beats scissors
-    // scissors beats paper
-    // paper beats rock
-    }
+}
 
 function playRound (playerSelection, computerSelection) {
 // get player selection ... prompt player(call playerSelection)
