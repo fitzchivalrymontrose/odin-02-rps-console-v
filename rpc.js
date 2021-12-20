@@ -17,9 +17,9 @@ function computerPlay () {
     return choice;
 }
 
-function playerSelection () {
+function playerSelection (choice) {
 // prompt player for choice
-    let choice = prompt('Rock, Paper, or Scissors? Choose: ').toLowerCase();
+//    let choice = prompt('Rock, Paper, or Scissors? Choose: ').toLowerCase();
 
 // if input is valid, return choice
 // else re-prompt player
@@ -47,15 +47,15 @@ function compareSelections (player, computer) {
         switch (computer) {
             case 'rock':
                 tieGame = true;
-                return 'Tie Game. Rocks all around. No one wins!';
+                whoWon.textContent = 'Tie Game. Rocks all around. No one wins!';
                 break
             case 'paper':
                 computerScore++;
-                return 'Paper covers Rock. You lose!';
+                whoWon.textContent = 'Paper covers Rock. You lose!';
                 break
             case 'scissors':
                 playerScore++;
-                return 'Rock smashes Scissors. You are victorious!';
+                whoWon.textContent = 'Rock smashes Scissors. You are victorious!';
                 break
         }
     }
@@ -63,15 +63,15 @@ function compareSelections (player, computer) {
         switch (computer) {
             case 'rock':
                 playerScore++;
-                return 'Paper covers Rock. You WIN!';
+                whoWon.textContent = 'Paper covers Rock. You WIN!';
                 break
             case 'paper':
                 tieGame = true;
-                return 'Tie Game. Papers everywhere. No one wins!';
+                whoWon.textContent = 'Tie Game. Papers everywhere. No one wins!';
                 break
             case 'scissors':
                 computerScore++;
-                return 'Scissors cut Paper. You lose!';
+                whoWon.textContent = 'Scissors cut Paper. You lose!';
                 break
         }
     }
@@ -79,34 +79,25 @@ function compareSelections (player, computer) {
         switch (computer) {
             case 'rock':
                 computerScore++;
-                return 'Rock smashes Scissors. You lose!';
+                whoWon.textContent = 'Rock smashes Scissors. You lose!';
                 break
             case 'paper':
                 playerScore++;
-                return 'Scissors cut Paper. You are the Victor!';
+                whoWon.textContent = 'Scissors cut Paper. You are the Victor!';
                 break
             case 'scissors':
                 tieGame = true
-                return 'Tie Game. Scissors verus Scissors. No one wins!';
+                whoWon.textContent = 'Tie Game. Scissors verus Scissors. No one wins!';
                 break
         }
     }
 }
 
-function playRound (playerSelection, computerPlay) {
-// get player selection ... prompt player(call playerSelection)
-// get computer selection ... call computerSelection()
-// compare player and computer selections
-    alert(compareSelections(playerSelection, computerPlay));
-    
-}
-
-
-
 // --- PLAY GAME - BEST OF FIVE ROUNDS ---
 let playerScore = 0;
 let computerScore = 0;
 let tieGame = false;
+let roundNumber = 0;
 
 function game () {
 // playRound 5 times
@@ -135,4 +126,110 @@ function game () {
 
 }
 
-console.log(game());
+////// BEGIN NEW GUI GAMEPLAY CODE
+const playBtn = document.querySelector('.btn-new-game');
+playBtn.addEventListener("click", playGame);
+
+const pScore = document.querySelector('.player-score');
+const cScore = document.querySelector('.computer-score');
+const round = document.querySelector('.round-count');
+
+const pSelection = document.querySelector('.player-selection');
+const cSelection = document.querySelector('.computer-selection');
+
+const whoWon = document.querySelector('.win-lose');
+
+const clickHandle = function (e) {
+    playRound(e, computerPlay());
+}
+whoWon.textContent = 'FIRST TO FIVE WINS.';
+let winner = 'none';
+
+const rockBtn = document.querySelector('.btn-rock');
+const paperBtn = document.querySelector('.btn-paper');
+const scissorsBtn = document.querySelector('.btn-scissors');
+
+rockBtn.addEventListener('click', () => clickHandle('rock'));
+paperBtn.addEventListener('click', () => clickHandle('paper'));   
+scissorsBtn.addEventListener('click', () => clickHandle('scissors'));
+
+rockBtn.style.display = 'none';
+paperBtn.style.display = 'none';   
+scissorsBtn.style.display = 'none';
+
+function playGame () {
+    winner = 'none';
+    playerScore = 0;
+    computerScore = 0;
+    roundNumber = 1;
+
+    playBtn.style.display = 'none';
+    whoWon.textContent = 'LET\'S GO!';
+    rockBtn.style.display = '';
+    paperBtn.style.display = '';   
+    scissorsBtn.style.display = '';
+
+    updateScores();    
+
+    
+
+    
+    console.clear();
+    console.log(winner);
+    console.log(playerScore);
+    console.log(computerScore);
+    console.log(roundNumber);
+    
+
+}
+
+function playRound (playerSelection, computerPlay) {
+    compareSelections(playerSelection, computerPlay);
+    roundNumber++;
+    updateScores();
+
+    if (winner === 'player') {
+        whoWon.textContent = 'YOU WIN THE GAME';
+        playBtn.style.display = '';
+        playBtn.textContent = 'PLAY AGAIN?';
+        resetGame();
+    }
+    else if (winner === 'computer') {
+        whoWon.textContent = 'YOU LOSE THE GAME';
+        playBtn.style.display = '';
+        playBtn.textContent = 'PLAY AGAIN?';
+        resetGame();
+    }
+    
+    console.log(winner);
+    console.log(playerScore);
+    console.log(computerScore);
+    console.log(roundNumber);
+    
+        
+}
+
+function updateScores () {
+    pScore.textContent = `${playerScore}`;
+    cScore.textContent = `${computerScore}`;
+    round.textContent = `${roundNumber}`; 
+    pSelection.textContent = '?';
+    cSelection.textContent = '?';
+    if (playerScore >= 5) {
+        winner = 'player';
+    } 
+    else if (computerScore >= 5) {
+        winner = 'computer';
+    }
+}
+
+function resetGame () {
+    winner = 'none';
+    playerScore = 0;
+    computerScore = 0;
+    roundNumber = 1;
+    rockBtn.style.display = 'none';
+    paperBtn.style.display = 'none';   
+    scissorsBtn.style.display = 'none';
+}
+

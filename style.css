@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-title {
+    font-size: 36px;
+    font-weight: bold;
+    padding: .5em 0;
+    margin-bottom: 1em;
+    background-color: darkslategray;
+}
+
+.game-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.round-status {
+
+    display: flex;
+    justify-content: space-around;
+    margin: .5em 0;
+}
+
+.round-selections {
+    display: flex;
+    justify-content: center;
+    margin: 5em 0 3em 0;
+    gap: 30px;
+
+}
+
+.selection {
+    margin: 3em 0;
+
+}

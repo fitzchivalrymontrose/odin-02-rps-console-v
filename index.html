@@ -5,9 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
-    <script src="rpc.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="rpc.js" defer></script>
 </head>
 <body>
-    
+    <header class="header-title">ROCK, PAPER, SCISSORS</header>
+    <div class="game-view">
+        <div class="round-status">
+            <div class="player-status">
+                <h1>Player:</h1>
+                <p class="player-score">-</p>
+                
+            </div>
+            
+            <div class="computer-status">
+                <h1>Computer:</h1>
+                <p class="computer-score">-</p>
+                
+            </div>
+        </div> 
+        <div class="game-status">
+            <button class="btn-new-game">PLAY</button>
+            <div class="game-result">
+                <p class="win-lose"></p>
+            </div>
+        </div>
+        <div class="results">
+            <div class="round">
+                <h1>Round</h1>
+                <p class="round-count">-</p>
+                <div class="round-selections">
+                    <div class="player-selection">
+                        <p>--</p>
+                    </div>
+                    <div class="computer-selection">
+                        <p>--</p>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="selection">
+            <button class="btn-rock">ROCK</button>
+            <button class="btn-paper">PAPER</button>
+            <button class="btn-scissors">SISSORS</button>
+        </div>
+    </div>
 </body>
 </html>
