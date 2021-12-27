@@ -175,10 +175,10 @@ function playGame () {
 
     
     console.clear();
-    console.log(winner);
-    console.log(playerScore);
-    console.log(computerScore);
-    console.log(roundNumber);
+    console.log('winner: ' + winner);
+    console.log('player score: ' + playerScore);
+    console.log('computer score: ' + computerScore);
+    console.log('round number: ' + roundNumber);
     
 
 }
@@ -213,8 +213,11 @@ function updateScores () {
     pScore.textContent = `${playerScore}`;
     cScore.textContent = `${computerScore}`;
     round.textContent = `${roundNumber}`; 
-    pSelection.textContent = '?';
-    cSelection.textContent = '?';
+    // pSelection.textContent = `${playerSelection.toUpperCase()}`;
+    // cSelection.textContent = `${computerPlay.toUpperCase()}`;
+    console.log(playerSelection, cSelection);
+    
+
     if (playerScore >= 5) {
         winner = 'player';
     } 
@@ -228,6 +231,8 @@ function resetGame () {
     playerScore = 0;
     computerScore = 0;
     roundNumber = 1;
+    pSelection.textContent = '?';
+    cSelection.textContent = '?';
     rockBtn.style.display = 'none';
     paperBtn.style.display = 'none';   
     scissorsBtn.style.display = 'none';
